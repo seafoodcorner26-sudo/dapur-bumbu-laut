@@ -106,6 +106,7 @@ textarea{min-height:84px;resize:vertical}
 
 /* INFO */
 .info{display:grid;gap:16px;margin-top:30px}
+.side{padding-top:0}
 .info div{border:1px solid var(--line);border-radius:18px;padding:22px;background:var(--char)}
 .info h3{font-size:1.2rem;color:var(--gold);margin-bottom:6px}
 .info p{color:var(--mute)}
@@ -187,6 +188,18 @@ footer img{width:72px;height:72px;border-radius:50%;margin:0 auto 12px}
   </div>
 </section>
 
+<section class="side">
+  <div class="wrap">
+    <h2>Menu sampingan</h2>
+    <p class="lead">Pelengkap kerang bakar Anda. Semua harganya sama.</p>
+    <div class="info">
+      <div><h3>Nasi putih</h3><p>Rp 5.000</p></div>
+      <div><h3>Es jeruk</h3><p>Rp 5.000</p></div>
+      <div><h3>Es teh</h3><p>Rp 5.000</p></div>
+    </div>
+  </div>
+</section>
+
 <section class="order" id="pesan">
   <div class="wrap">
     <h2>Pesan lewat PO</h2>
@@ -194,7 +207,7 @@ footer img{width:72px;height:72px;border-radius:50%;margin:0 auto 12px}
 
     <form id="orderForm" novalidate>
       <div>
-        <span class="lbl">Pilih varian dan jumlah porsi</span>
+        <span class="lbl">Pilih menu dan jumlah</span>
         <div class="items" id="items"></div>
       </div>
       <div class="row2">
@@ -245,39 +258,46 @@ footer img{width:72px;height:72px;border-radius:50%;margin:0 auto 12px}
 
 <script>
 (function(){
-  var WA='6282326389868', PRICE=25000;
-  var flavors=['BBQ','Pedas Manis','Bumbu Bali'];
-  var desc=['Manis gurih berasap','Pedas dan manis','Rempah khas Bali'];
-  var qty=[0,0,0];
+  var WA='6282326389868';
+  var menu=[
+    {n:'BBQ',k:'Kerang Bakar BBQ',p:25000,d:'Manis gurih berasap'},
+    {n:'Pedas Manis',k:'Kerang Bakar Pedas Manis',p:25000,d:'Pedas dan manis'},
+    {n:'Bumbu Bali',k:'Kerang Bakar Bumbu Bali',p:25000,d:'Rempah khas Bali'},
+    {n:'Nasi Putih',k:'Nasi Putih',p:5000,d:'Menu sampingan'},
+    {n:'Es Jeruk',k:'Es Jeruk',p:5000,d:'Menu sampingan'},
+    {n:'Es Teh',k:'Es Teh',p:5000,d:'Menu sampingan'}
+  ];
+  var qty=menu.map(function(){return 0});
   var rp=function(n){return 'Rp '+n.toString().replace(/\B(?=(\d{3})+(?!\d))/g,'.')};
 
   // Item stepper
   var box=document.getElementById('items');
-  flavors.forEach(function(f,i){
+  menu.forEach(function(m,i){
+    if(i===3){var h=document.createElement('span');h.className='lbl';h.style.marginTop='10px';h.textContent='Menu sampingan';box.appendChild(h)}
     var el=document.createElement('div');el.className='item';
-    el.innerHTML='<span>'+f+'<small>'+desc[i]+' · '+rp(PRICE)+'</small></span>'+
-      '<div class="step"><button type="button" aria-label="Kurangi '+f+'">−</button><output id="q'+i+'">0</output><button type="button" aria-label="Tambah '+f+'">+</button></div>';
+    el.innerHTML='<span>'+m.n+'<small>'+m.d+' · '+rp(m.p)+'</small></span>'+
+      '<div class="step"><button type="button" aria-label="Kurangi '+m.n+'">−</button><output id="q'+i+'">0</output><button type="button" aria-label="Tambah '+m.n+'">+</button></div>';
     var b=el.querySelectorAll('button');
     b[0].onclick=function(){set(i,-1)};b[1].onclick=function(){set(i,1)};
     box.appendChild(el);
   });
   function set(i,d){qty[i]=Math.max(0,Math.min(99,qty[i]+d));document.getElementById('q'+i).textContent=qty[i];total();}
-  function total(){var t=qty.reduce(function(a,b){return a+b},0);document.getElementById('total').textContent=rp(t*PRICE);return t;}
+  function total(){var t=0;menu.forEach(function(m,i){t+=qty[i]*m.p});document.getElementById('total').textContent=rp(t);return t;}
 
   // Kirim ke WhatsApp
   document.getElementById('orderForm').addEventListener('submit',function(e){
     e.preventDefault();
     var v=function(id){return document.getElementById(id).value.trim()};
     var err=document.getElementById('err');
-    var n=total();
-    if(!n){err.textContent='Pilih minimal 1 porsi.';return}
+    var sum=total();
+    if(!sum){err.textContent='Pilih minimal 1 menu.';return}
     if(!v('nama')){err.textContent='Isi nama Anda.';document.getElementById('nama').focus();return}
     if(!v('area')){err.textContent='Pilih area pengantaran.';return}
     if(!v('alamat')){err.textContent='Isi alamat lengkap.';document.getElementById('alamat').focus();return}
     err.textContent='';
     var lines=['Halo Dapur Bumbu Laut, saya mau pesan (PO):',''];
-    flavors.forEach(function(f,i){if(qty[i])lines.push('• Kerang Bakar '+f+' x '+qty[i])});
-    lines.push('','Total: '+rp(n*PRICE)+' (promo Rp 25.000/porsi)','',
+    menu.forEach(function(m,i){if(qty[i])lines.push('• '+m.k+' x '+qty[i])});
+    lines.push('','Total: '+rp(sum),'',
       'Nama: '+v('nama'),'Area: '+v('area'),'Alamat: '+v('alamat'));
     if(v('tgl')){var p=v('tgl').split('-');lines.push('Tanggal: '+p[2]+'/'+p[1]+'/'+p[0])}
     if(v('jam'))lines.push('Jam: '+v('jam'));
