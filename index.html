@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Dapur Bumbu Laut – Kerang Bakar Savory Grill | Launching 3 Desember 2026</title>
-<meta name="description" content="Kerang bakar, cumi bakar, dan kakap bakar dengan 3 varian rasa: BBQ, Pedas Manis, Bumbu Bali. Promo launching kerang bakar Rp 25.000. Pesan via PO lewat WhatsApp. Free delivery Antiga, Padangbai, Manggis.">
+<meta name="description" content="Kerang bakar, cumi bakar, dan kakap bakar dengan sambal pedas manis atau bumbu Bali. Promo launching kerang bakar Rp 25.000. Pesan via PO lewat WhatsApp. Free delivery Antiga, Padangbai, Manggis.">
 <meta property="og:title" content="Dapur Bumbu Laut – Kerang Bakar">
 <meta property="og:description" content="Bumbu meresap, sari laut pilihan. Promo launching Rp 25.000, pesan via PO.">
 <meta property="og:image" content="images/hero.jpg">
@@ -135,7 +135,7 @@ footer img{width:72px;height:72px;border-radius:50%;margin:0 auto 12px}
 @media(min-width:760px){
   .hero .wrap{grid-template-columns:1.05fr 1fr}
   .cards,.info{grid-template-columns:repeat(3,1fr)}
-  .dishes{grid-template-columns:1fr 1fr}
+  .dishes{grid-template-columns:repeat(3,1fr)}
   .row2{grid-template-columns:1fr 1fr}
 }
 @media(max-width:420px){.tag{display:none}.count div{width:66px}.wa span{display:none}.wa{padding:15px}}
@@ -161,7 +161,7 @@ footer img{width:72px;height:72px;border-radius:50%;margin:0 auto 12px}
       <p class="q">“Bumbu meresap, sari laut pilihan”</p>
       <div class="cta-row">
         <a href="#pesan" class="btn btn-fire">Pesan via PO</a>
-        <a href="#varian" class="btn btn-ghost">Lihat 3 varian rasa</a>
+        <a href="#menu" class="btn btn-ghost">Lihat menu</a>
       </div>
       <p class="count-note" id="countNote">Launching Kamis, 3 Desember 2026 · buka pukul 10.00</p>
       <div class="count" id="count" aria-live="polite">
@@ -178,23 +178,16 @@ footer img{width:72px;height:72px;border-radius:50%;margin:0 auto 12px}
   </div>
 </section>
 
-<section class="varian" id="varian">
+<section id="menu">
   <div class="wrap">
-    <h2>Pilih 3 varian rasa</h2>
-    <p class="lead">Kerang dibakar di atas bara arang, lalu dibalur bumbu yang meresap sampai ke dalam.</p>
-    <div class="cards">
-      <article class="card"><img src="images/bbq.jpg" alt="Kerang bakar saus BBQ" loading="lazy"><div><h3>BBQ</h3><p>Manis gurih berasap, dengan lapisan saus karamel dari panggangan arang.</p></div></article>
-      <article class="card"><img src="images/pedas-manis.jpg" alt="Kerang bakar pedas manis" loading="lazy"><div><h3>Pedas Manis</h3><p>Saus merah pekat yang pedasnya pas, cocok untuk pencinta sambal.</p></div></article>
-      <article class="card"><img src="images/bumbu-bali.jpg" alt="Kerang bakar bumbu Bali" loading="lazy"><div><h3>Bumbu Bali</h3><p>Bumbu rempah khas Bali, harum dan segar dengan perasan jeruk.</p></div></article>
-    </div>
-  </div>
-</section>
-
-<section>
-  <div class="wrap">
-    <h2>Cumi &amp; kakap bakar</h2>
-    <p class="lead">Menu bakar lainnya untuk yang ingin porsi lebih besar. Dilengkapi sambal pilihan Anda, dan harganya tetap sama apa pun sambal yang dipilih.</p>
+    <h2>Menu bakar</h2>
+    <p class="lead">Semua menu dilengkapi sambal pilihan Anda: pedas manis atau bumbu Bali. Harganya tetap sama apa pun sambal yang dipilih.</p>
     <div class="dishes">
+      <article class="dish">
+        <div class="pair"><img src="images/pedas-manis.jpg" alt="Kerang bakar dengan saus merah" loading="lazy"><img src="images/bumbu-bali.jpg" alt="Kerang bakar bumbu panggang" loading="lazy"></div>
+        <div class="body"><h3>Kerang Bakar</h3><div class="pr">Rp 25.000 <small>promo · <s>Rp 35.000</s></small></div><p>Kerang dibakar di atas bara arang, bumbunya meresap sampai ke dalam.</p>
+          <div class="flv"><span>Sambal Pedas Manis</span><span>Sambal Bumbu Bali</span></div></div>
+      </article>
       <article class="dish">
         <div class="pair"><img src="images/cumi-1.jpg" alt="Cumi bakar di atas panggangan" loading="lazy"><img src="images/cumi-2.jpg" alt="Cumi bakar bumbu di atas daun pisang" loading="lazy"></div>
         <div class="body"><h3>Cumi Bakar</h3><div class="pr">Rp 45.000 <small>per porsi</small></div><p>Cumi empuk dibakar di atas arang, dilengkapi sambal pilihan Anda.</p>
@@ -212,7 +205,7 @@ footer img{width:72px;height:72px;border-radius:50%;margin:0 auto 12px}
 <section class="price">
   <div class="wrap">
     <h2>Promo launching kerang bakar</h2>
-    <p class="lead" style="margin-inline:auto">Promo khusus Kerang Bakar di minggu pertama. Ketiga varian rasa harganya sama.</p>
+    <p class="lead" style="margin-inline:auto">Promo khusus Kerang Bakar di minggu pertama. Pilihan sambal tidak mengubah harga.</p>
     <div class="pricebox">
       <span class="old">Rp 35.000</span>
       <b>Rp 25.000</b>
@@ -292,12 +285,10 @@ footer img{width:72px;height:72px;border-radius:50%;margin:0 auto 12px}
 <script>
 (function(){
   var WA='6282326389868';
-  var FL=[['BBQ','Manis gurih berasap'],['Pedas Manis','Pedas dan manis'],['Bumbu Bali','Rempah khas Bali']];
-  var menu=[];
-  FL.forEach(function(f){menu.push({g:'Kerang Bakar (promo)',n:f[0],k:'Kerang Bakar '+f[0],p:25000,d:f[1]})});
   var SB=[['Sambal Pedas Manis','Dilengkapi sambal pedas manis'],['Sambal Bumbu Bali','Dilengkapi sambal bumbu Bali']];
-  [['Cumi Bakar',45000],['Kakap Bakar',35000]].forEach(function(g){
-    SB.forEach(function(f){menu.push({g:g[0]+' (pilih sambal)',n:f[0],k:g[0]+' + '+f[0],p:g[1],d:f[1]})});
+  var menu=[];
+  [['Kerang Bakar (promo)','Kerang Bakar',25000],['Cumi Bakar','Cumi Bakar',45000],['Kakap Bakar','Kakap Bakar',35000]].forEach(function(g){
+    SB.forEach(function(f){menu.push({g:g[0],n:f[0],k:g[1]+' + '+f[0],p:g[2],d:f[1]})});
   });
   [['Nasi Putih'],['Es Jeruk'],['Es Teh']].forEach(function(x){menu.push({g:'Menu sampingan',n:x[0],k:x[0],p:5000,d:'Pelengkap'})});
   var qty=menu.map(function(){return 0});
