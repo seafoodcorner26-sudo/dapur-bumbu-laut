@@ -181,7 +181,7 @@ footer img{width:72px;height:72px;border-radius:50%;margin:0 auto 12px}
 <section class="varian" id="varian">
   <div class="wrap">
     <h2>Pilih 3 varian rasa</h2>
-    <p class="lead">Semua menu bakar kami bisa dipilih dengan 3 rasa ini: kerang, cumi, dan kakap. Dibakar di atas bara arang, bumbunya meresap sampai ke dalam.</p>
+    <p class="lead">Kerang dibakar di atas bara arang, lalu dibalur bumbu yang meresap sampai ke dalam.</p>
     <div class="cards">
       <article class="card"><img src="images/bbq.jpg" alt="Kerang bakar saus BBQ" loading="lazy"><div><h3>BBQ</h3><p>Manis gurih berasap, dengan lapisan saus karamel dari panggangan arang.</p></div></article>
       <article class="card"><img src="images/pedas-manis.jpg" alt="Kerang bakar pedas manis" loading="lazy"><div><h3>Pedas Manis</h3><p>Saus merah pekat yang pedasnya pas, cocok untuk pencinta sambal.</p></div></article>
@@ -193,17 +193,17 @@ footer img{width:72px;height:72px;border-radius:50%;margin:0 auto 12px}
 <section>
   <div class="wrap">
     <h2>Cumi &amp; kakap bakar</h2>
-    <p class="lead">Menu bakar lainnya untuk yang ingin porsi lebih besar. Pilih salah satu dari 3 rasa.</p>
+    <p class="lead">Menu bakar lainnya untuk yang ingin porsi lebih besar. Dilengkapi sambal pilihan Anda, dan harganya tetap sama apa pun sambal yang dipilih.</p>
     <div class="dishes">
       <article class="dish">
         <div class="pair"><img src="images/cumi-1.jpg" alt="Cumi bakar di atas panggangan" loading="lazy"><img src="images/cumi-2.jpg" alt="Cumi bakar bumbu di atas daun pisang" loading="lazy"></div>
-        <div class="body"><h3>Cumi Bakar</h3><div class="pr">Rp 45.000 <small>per porsi</small></div><p>Cumi empuk dibakar di atas arang dengan bumbu pilihan.</p>
-          <div class="flv"><span>BBQ</span><span>Pedas Manis</span><span>Bumbu Bali</span></div></div>
+        <div class="body"><h3>Cumi Bakar</h3><div class="pr">Rp 45.000 <small>per porsi</small></div><p>Cumi empuk dibakar di atas arang, dilengkapi sambal pilihan Anda.</p>
+          <div class="flv"><span>Sambal Pedas Manis</span><span>Sambal Bumbu Bali</span></div></div>
       </article>
       <article class="dish">
         <div class="pair"><img src="images/kakap-1.jpg" alt="Kakap bakar dengan sambal" loading="lazy"><img src="images/kakap-2.jpg" alt="Kakap bakar bumbu kecap" loading="lazy"></div>
-        <div class="body"><h3>Kakap Bakar</h3><div class="pr">Rp 35.000 <small>per porsi</small></div><p>Ikan kakap segar dibakar dengan bumbu yang meresap.</p>
-          <div class="flv"><span>BBQ</span><span>Pedas Manis</span><span>Bumbu Bali</span></div></div>
+        <div class="body"><h3>Kakap Bakar</h3><div class="pr">Rp 35.000 <small>per porsi</small></div><p>Ikan kakap segar dibakar di atas arang, dilengkapi sambal pilihan Anda.</p>
+          <div class="flv"><span>Sambal Pedas Manis</span><span>Sambal Bumbu Bali</span></div></div>
       </article>
     </div>
   </div>
@@ -294,8 +294,10 @@ footer img{width:72px;height:72px;border-radius:50%;margin:0 auto 12px}
   var WA='6282326389868';
   var FL=[['BBQ','Manis gurih berasap'],['Pedas Manis','Pedas dan manis'],['Bumbu Bali','Rempah khas Bali']];
   var menu=[];
-  [['Kerang Bakar (promo)','Kerang Bakar',25000],['Cumi Bakar','Cumi Bakar',45000],['Kakap Bakar','Kakap Bakar',35000]].forEach(function(g){
-    FL.forEach(function(f){menu.push({g:g[0],n:f[0],k:g[1]+' '+f[0],p:g[2],d:f[1]})});
+  FL.forEach(function(f){menu.push({g:'Kerang Bakar (promo)',n:f[0],k:'Kerang Bakar '+f[0],p:25000,d:f[1]})});
+  var SB=[['Sambal Pedas Manis','Dilengkapi sambal pedas manis'],['Sambal Bumbu Bali','Dilengkapi sambal bumbu Bali']];
+  [['Cumi Bakar',45000],['Kakap Bakar',35000]].forEach(function(g){
+    SB.forEach(function(f){menu.push({g:g[0]+' (pilih sambal)',n:f[0],k:g[0]+' + '+f[0],p:g[1],d:f[1]})});
   });
   [['Nasi Putih'],['Es Jeruk'],['Es Teh']].forEach(function(x){menu.push({g:'Menu sampingan',n:x[0],k:x[0],p:5000,d:'Pelengkap'})});
   var qty=menu.map(function(){return 0});
