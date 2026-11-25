@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Dapur Bumbu Laut – Kerang Bakar Savory Grill | Launching 3 Desember 2026</title>
-<meta name="description" content="Kerang bakar 3 varian rasa: BBQ, Pedas Manis, Bumbu Bali. Promo launching Rp 25.000. Pesan via PO lewat WhatsApp. Free delivery Antiga, Padangbai, Manggis.">
+<meta name="description" content="Kerang bakar, cumi bakar, dan kakap bakar dengan 3 varian rasa: BBQ, Pedas Manis, Bumbu Bali. Promo launching kerang bakar Rp 25.000. Pesan via PO lewat WhatsApp. Free delivery Antiga, Padangbai, Manggis.">
 <meta property="og:title" content="Dapur Bumbu Laut – Kerang Bakar">
 <meta property="og:description" content="Bumbu meresap, sari laut pilihan. Promo launching Rp 25.000, pesan via PO.">
 <meta property="og:image" content="images/hero.jpg">
@@ -76,6 +76,19 @@ header .wrap{display:flex;align-items:center;justify-content:space-between;gap:1
 .card h3{font-size:1.5rem;color:var(--gold);margin-bottom:4px}
 .card p{color:var(--mute);font-size:.95rem}
 
+/* MENU BAKAR LAINNYA */
+.dishes{display:grid;gap:18px;margin-top:34px}
+.dish{background:var(--char);border:1px solid var(--line);border-radius:20px;overflow:hidden}
+.pair{display:grid;grid-template-columns:1fr 1fr;gap:2px}
+.pair img{width:100%;aspect-ratio:1/1;object-fit:cover}
+.dish .body{padding:20px 22px 24px}
+.dish h3{font-size:1.7rem;margin-bottom:4px}
+.dish .pr{font:800 1.9rem var(--serif);color:var(--gold)}
+.dish .pr small{font:600 .9rem var(--sans);color:var(--mute)}
+.dish p{color:var(--mute);margin-top:6px}
+.flv{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.flv span{border:1px solid var(--gold);color:var(--gold);border-radius:999px;padding:4px 12px;font-size:.8rem;font-weight:800}
+
 /* HARGA */
 .price{text-align:center}
 .pricebox{display:inline-block;margin-top:26px;padding:26px 44px;border:2px solid var(--ember);border-radius:24px;background:linear-gradient(180deg,rgba(255,106,26,.12),transparent)}
@@ -122,6 +135,7 @@ footer img{width:72px;height:72px;border-radius:50%;margin:0 auto 12px}
 @media(min-width:760px){
   .hero .wrap{grid-template-columns:1.05fr 1fr}
   .cards,.info{grid-template-columns:repeat(3,1fr)}
+  .dishes{grid-template-columns:1fr 1fr}
   .row2{grid-template-columns:1fr 1fr}
 }
 @media(max-width:420px){.tag{display:none}.count div{width:66px}.wa span{display:none}.wa{padding:15px}}
@@ -167,7 +181,7 @@ footer img{width:72px;height:72px;border-radius:50%;margin:0 auto 12px}
 <section class="varian" id="varian">
   <div class="wrap">
     <h2>Pilih 3 varian rasa</h2>
-    <p class="lead">Kerang dibakar di atas bara arang, lalu dibalur bumbu yang meresap sampai ke dalam.</p>
+    <p class="lead">Semua menu bakar kami bisa dipilih dengan 3 rasa ini: kerang, cumi, dan kakap. Dibakar di atas bara arang, bumbunya meresap sampai ke dalam.</p>
     <div class="cards">
       <article class="card"><img src="images/bbq.jpg" alt="Kerang bakar saus BBQ" loading="lazy"><div><h3>BBQ</h3><p>Manis gurih berasap, dengan lapisan saus karamel dari panggangan arang.</p></div></article>
       <article class="card"><img src="images/pedas-manis.jpg" alt="Kerang bakar pedas manis" loading="lazy"><div><h3>Pedas Manis</h3><p>Saus merah pekat yang pedasnya pas, cocok untuk pencinta sambal.</p></div></article>
@@ -176,10 +190,29 @@ footer img{width:72px;height:72px;border-radius:50%;margin:0 auto 12px}
   </div>
 </section>
 
+<section>
+  <div class="wrap">
+    <h2>Cumi &amp; kakap bakar</h2>
+    <p class="lead">Menu bakar lainnya untuk yang ingin porsi lebih besar. Pilih salah satu dari 3 rasa.</p>
+    <div class="dishes">
+      <article class="dish">
+        <div class="pair"><img src="images/cumi-1.jpg" alt="Cumi bakar di atas panggangan" loading="lazy"><img src="images/cumi-2.jpg" alt="Cumi bakar bumbu di atas daun pisang" loading="lazy"></div>
+        <div class="body"><h3>Cumi Bakar</h3><div class="pr">Rp 45.000 <small>per porsi</small></div><p>Cumi empuk dibakar di atas arang dengan bumbu pilihan.</p>
+          <div class="flv"><span>BBQ</span><span>Pedas Manis</span><span>Bumbu Bali</span></div></div>
+      </article>
+      <article class="dish">
+        <div class="pair"><img src="images/kakap-1.jpg" alt="Kakap bakar dengan sambal" loading="lazy"><img src="images/kakap-2.jpg" alt="Kakap bakar bumbu kecap" loading="lazy"></div>
+        <div class="body"><h3>Kakap Bakar</h3><div class="pr">Rp 35.000 <small>per porsi</small></div><p>Ikan kakap segar dibakar dengan bumbu yang meresap.</p>
+          <div class="flv"><span>BBQ</span><span>Pedas Manis</span><span>Bumbu Bali</span></div></div>
+      </article>
+    </div>
+  </div>
+</section>
+
 <section class="price">
   <div class="wrap">
-    <h2>Harga promo launching</h2>
-    <p class="lead" style="margin-inline:auto">Berlaku untuk menu spesial minggu pertama. Semua varian harganya sama.</p>
+    <h2>Promo launching kerang bakar</h2>
+    <p class="lead" style="margin-inline:auto">Promo khusus Kerang Bakar di minggu pertama. Ketiga varian rasa harganya sama.</p>
     <div class="pricebox">
       <span class="old">Rp 35.000</span>
       <b>Rp 25.000</b>
@@ -259,21 +292,19 @@ footer img{width:72px;height:72px;border-radius:50%;margin:0 auto 12px}
 <script>
 (function(){
   var WA='6282326389868';
-  var menu=[
-    {n:'BBQ',k:'Kerang Bakar BBQ',p:25000,d:'Manis gurih berasap'},
-    {n:'Pedas Manis',k:'Kerang Bakar Pedas Manis',p:25000,d:'Pedas dan manis'},
-    {n:'Bumbu Bali',k:'Kerang Bakar Bumbu Bali',p:25000,d:'Rempah khas Bali'},
-    {n:'Nasi Putih',k:'Nasi Putih',p:5000,d:'Menu sampingan'},
-    {n:'Es Jeruk',k:'Es Jeruk',p:5000,d:'Menu sampingan'},
-    {n:'Es Teh',k:'Es Teh',p:5000,d:'Menu sampingan'}
-  ];
+  var FL=[['BBQ','Manis gurih berasap'],['Pedas Manis','Pedas dan manis'],['Bumbu Bali','Rempah khas Bali']];
+  var menu=[];
+  [['Kerang Bakar (promo)','Kerang Bakar',25000],['Cumi Bakar','Cumi Bakar',45000],['Kakap Bakar','Kakap Bakar',35000]].forEach(function(g){
+    FL.forEach(function(f){menu.push({g:g[0],n:f[0],k:g[1]+' '+f[0],p:g[2],d:f[1]})});
+  });
+  [['Nasi Putih'],['Es Jeruk'],['Es Teh']].forEach(function(x){menu.push({g:'Menu sampingan',n:x[0],k:x[0],p:5000,d:'Pelengkap'})});
   var qty=menu.map(function(){return 0});
   var rp=function(n){return 'Rp '+n.toString().replace(/\B(?=(\d{3})+(?!\d))/g,'.')};
 
   // Item stepper
   var box=document.getElementById('items');
   menu.forEach(function(m,i){
-    if(i===3){var h=document.createElement('span');h.className='lbl';h.style.marginTop='10px';h.textContent='Menu sampingan';box.appendChild(h)}
+    if(i===0||m.g!==menu[i-1].g){var h=document.createElement('span');h.className='lbl';h.style.marginTop='10px';h.style.color='var(--gold)';h.textContent=m.g;box.appendChild(h)}
     var el=document.createElement('div');el.className='item';
     el.innerHTML='<span>'+m.n+'<small>'+m.d+' · '+rp(m.p)+'</small></span>'+
       '<div class="step"><button type="button" aria-label="Kurangi '+m.n+'">−</button><output id="q'+i+'">0</output><button type="button" aria-label="Tambah '+m.n+'">+</button></div>';
