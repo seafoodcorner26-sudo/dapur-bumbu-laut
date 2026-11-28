@@ -2,11 +2,11 @@
 <html lang="id">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Dapur Bumbu Laut – Kerang Bakar Savory Grill | Launching 3 Desember 2026</title>
-<meta name="description" content="Kerang bakar, cumi bakar, dan kakap bakar Promo launching kerang bakar Rp 30.000. Pesan via PO lewat WhatsApp. Free delivery Antiga, Padangbai, Manggis.">
+<meta name="description" content="Kerang bakar, cumi bakar, dan kakap bakar dengan sambal pedas manis atau bumbu Bali. Promo launching kerang bakar Rp 25.000. Pesan via PO lewat WhatsApp. Free delivery Antiga, Padangbai, Manggis.">
 <meta property="og:title" content="Dapur Bumbu Laut – Kerang Bakar">
-<meta property="og:description" content="Bumbu meresap, sari laut pilihan. Promo launching Rp 30.000, pesan via PO.">
+<meta property="og:description" content="Bumbu meresap, sari laut pilihan. Promo launching Rp 25.000, pesan via PO.">
 <meta property="og:image" content="images/hero.jpg">
 <meta name="theme-color" content="#0b0908">
 <link rel="icon" href="images/logo.jpg">
@@ -140,9 +140,36 @@ footer img{width:72px;height:72px;border-radius:50%;margin:0 auto 12px}
 }
 @media(max-width:420px){.tag{display:none}.count div{width:66px}.wa span{display:none}.wa{padding:15px}}
 @media(prefers-reduced-motion:reduce){.spark,.wa::after{animation:none}html{scroll-behavior:auto}}
+
+/* ===== INTERAKTIF: API, ARANG & GRILL ===== */
+#fire{position:fixed;left:0;top:0;width:100%;height:100%;z-index:0;pointer-events:none;transform:translateZ(0)}
+header,main,footer{position:relative;z-index:1}
+header{position:absolute}
+.hero{background:none}
+.plate::before{filter:none}
+.spark{display:none}
+.order{background:rgba(22,18,16,.9)}
+footer{background:rgba(11,9,8,.9)}
+.wa{bottom:calc(18px + env(safe-area-inset-bottom,0px))}
+.story{height:380vh;padding:0;position:relative}
+.sstage{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden}
+.sstage::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(11,9,8,.55),rgba(11,9,8,0) 30%,rgba(11,9,8,0) 55%,rgba(11,9,8,.5))}
+.sstage .wrap{position:relative;height:100%}
+.gauge{position:absolute;left:0;right:0;top:calc(22px + env(safe-area-inset-top,0px));display:flex;align-items:center;gap:14px}
+.gauge b{font:800 1.2rem var(--serif);color:var(--gold);min-width:3.7em;font-variant-numeric:tabular-nums}
+.gauge .tr{flex:1;height:3px;background:rgba(255,255,255,.16);border-radius:3px;overflow:hidden}
+.gauge .tr i{display:block;height:100%;background:linear-gradient(90deg,var(--gold),var(--ember));transform:scaleX(0);transform-origin:left}
+.sc{position:absolute;left:0;right:0;bottom:calc(16vh + env(safe-area-inset-bottom,0px));opacity:0;transform:translateY(16px);transition:opacity .5s,transform .5s;pointer-events:none}
+.sc.on{opacity:1;transform:none;pointer-events:auto}
+.sc h2{font-size:clamp(2.5rem,10vw,5.4rem);margin-bottom:14px;text-shadow:0 2px 26px #000}
+.sc h2 em{font-weight:500;color:var(--gold)}
+.sc p{color:var(--cream);max-width:34ch;margin-bottom:18px;text-shadow:0 1px 14px #000}
+.fh{position:absolute;left:0;bottom:calc(4vh + env(safe-area-inset-bottom,0px));font-size:.8rem;color:var(--mute);text-shadow:0 1px 8px #000}
+@media(prefers-reduced-motion:reduce){.sc{transition:none}}
 </style>
 </head>
 <body>
+<canvas id="fire" aria-hidden="true"></canvas>
 
 <header>
   <div class="wrap">
@@ -173,27 +200,40 @@ footer img{width:72px;height:72px;border-radius:50%;margin:0 auto 12px}
     </div>
     <div class="plate">
       <div class="badge"><div>HEMAT<b>10 RB</b></div></div>
-      <img src="images/hero.jpg" alt="Sepiring kerang bakar dengan jeruk nipis" width="1100" height="653">
+      <img src="images/hero.jpg" alt="Sepiring kerang bakar dengan sambal dan jeruk nipis" width="1100" height="653">
     </div>
   </div>
+</section>
+
+<section class="story" id="story" aria-label="Proses pembakaran">
+  <div class="sstage"><div class="wrap">
+    <div class="gauge" aria-hidden="true"><b id="temp">120°C</b><div class="tr"><i id="bar"></i></div></div>
+    <div class="sc on"><h2>Bara dulu,<br><em>baru dibakar.</em></h2><p>Arang dinyalakan sampai bara merata, supaya panasnya stabil untuk setiap porsi.</p></div>
+    <div class="sc"><h2>Bumbu meresap<br><em>sampai ke dalam.</em></h2><p>Kerang dibakar di atas bara arang, lalu dilengkapi sambal pedas manis atau bumbu Bali.</p></div>
+    <div class="sc"><h2>Matang,<br><em>langsung diantar.</em></h2><p>Gratis antar untuk area Antiga, Padangbai, dan Manggis. Kerang bakar promo Rp 25.000.</p><a href="#pesan" class="btn btn-fire">Pesan via PO</a></div>
+    <span class="fh">Sentuh layar untuk mengipas api</span>
+  </div></div>
 </section>
 
 <section id="menu">
   <div class="wrap">
     <h2>Menu bakar</h2>
-    <p class="lead">Dibakar di atas bara arang, bumbunya meresap sampai ke dalam. Semua pesanan lewat PO.</p>
+    <p class="lead">Semua menu dilengkapi sambal pilihan Anda: pedas manis atau bumbu Bali. Harganya tetap sama apa pun sambal yang dipilih.</p>
     <div class="dishes">
       <article class="dish">
         <div class="pair"><img src="images/pedas-manis.jpg" alt="Kerang bakar dengan saus merah" loading="lazy"><img src="images/bumbu-bali.jpg" alt="Kerang bakar bumbu panggang" loading="lazy"></div>
-        <div class="body"><h3>Kerang Bakar</h3><div class="pr">Rp 30.000 <small>promo · <s>Rp 40.000</s></small></div><p>Kerang dibakar di atas bara arang, bumbunya meresap sampai ke dalam.</p></div>
+        <div class="body"><h3>Kerang Bakar</h3><div class="pr">Rp 25.000 <small>promo · <s>Rp 35.000</s></small></div><p>Kerang dibakar di atas bara arang, bumbunya meresap sampai ke dalam.</p>
+          <div class="flv"><span>Sambal Pedas Manis</span><span>Sambal Bumbu Bali</span></div></div>
       </article>
       <article class="dish">
         <div class="pair"><img src="images/cumi-1.jpg" alt="Cumi bakar di atas panggangan" loading="lazy"><img src="images/cumi-2.jpg" alt="Cumi bakar bumbu di atas daun pisang" loading="lazy"></div>
-        <div class="body"><h3>Cumi Bakar Porsi Besar</h3><div class="pr">Rp 80.000 <small>per ekor · <s>Rp 100.000</s></small></div><p>Cumi empuk ukuran besar (±400 g) dibakar di atas arang dengan bumbu yang meresap.</p><div class="flv"><span style="background:var(--ember);border-color:var(--ember);color:#1a0e04">Hanya 5 porsi tersedia</span></div></div>
+        <div class="body"><h3>Cumi Bakar</h3><div class="pr">Rp 45.000 <small>per porsi</small></div><p>Cumi empuk dibakar di atas arang, dilengkapi sambal pilihan Anda.</p>
+          <div class="flv"><span>Sambal Pedas Manis</span><span>Sambal Bumbu Bali</span></div></div>
       </article>
       <article class="dish">
-        <div class="pair"><img src="images/kakap-1.jpg" alt="Kakap bakar di atas piring" loading="lazy"><img src="images/kakap-2.jpg" alt="Kakap bakar bumbu kecap" loading="lazy"></div>
-        <div class="body"><h3>Kakap Bakar</h3><div class="pr">Rp 35.000 <small>per porsi</small></div><p>Ikan kakap segar dibakar di atas arang dengan bumbu yang meresap.</p></div>
+        <div class="pair"><img src="images/kakap-1.jpg" alt="Kakap bakar dengan sambal" loading="lazy"><img src="images/kakap-2.jpg" alt="Kakap bakar bumbu kecap" loading="lazy"></div>
+        <div class="body"><h3>Kakap Bakar</h3><div class="pr">Rp 35.000 <small>per porsi</small></div><p>Ikan kakap segar dibakar di atas arang, dilengkapi sambal pilihan Anda.</p>
+          <div class="flv"><span>Sambal Pedas Manis</span><span>Sambal Bumbu Bali</span></div></div>
       </article>
     </div>
   </div>
@@ -202,10 +242,10 @@ footer img{width:72px;height:72px;border-radius:50%;margin:0 auto 12px}
 <section class="price">
   <div class="wrap">
     <h2>Promo launching kerang bakar</h2>
-    <p class="lead" style="margin-inline:auto">Promo khusus Kerang Bakar di minggu pertama.</p>
+    <p class="lead" style="margin-inline:auto">Promo khusus Kerang Bakar di minggu pertama. Pilihan sambal tidak mengubah harga.</p>
     <div class="pricebox">
-      <span class="old">Rp 40.000</span>
-      <b>Rp 30.000</b>
+      <span class="old">Rp 35.000</span>
+      <b>Rp 25.000</b>
       <span>per porsi · hemat Rp 10.000</span>
     </div>
   </div>
@@ -282,11 +322,11 @@ footer img{width:72px;height:72px;border-radius:50%;margin:0 auto 12px}
 <script>
 (function(){
   var WA='6282326389868';
-  var menu=[
-    {g:'Menu bakar',n:'Kerang Bakar (promo)',k:'Kerang Bakar',p:30000,d:'Promo launching'},
-    {g:'Menu bakar',n:'Cumi Bakar Porsi Besar',k:'Cumi Bakar Porsi Besar (1 ekor)',p:80000,d:'Hanya 5 porsi tersedia',max:5},
-    {g:'Menu bakar',n:'Kakap Bakar',k:'Kakap Bakar',p:35000,d:'Per porsi'}
-  ];
+  var SB=[['Sambal Pedas Manis','Dilengkapi sambal pedas manis'],['Sambal Bumbu Bali','Dilengkapi sambal bumbu Bali']];
+  var menu=[];
+  [['Kerang Bakar (promo)','Kerang Bakar',25000],['Cumi Bakar','Cumi Bakar',45000],['Kakap Bakar','Kakap Bakar',35000]].forEach(function(g){
+    SB.forEach(function(f){menu.push({g:g[0],n:f[0],k:g[1]+' + '+f[0],p:g[2],d:f[1]})});
+  });
   [['Nasi Putih'],['Es Jeruk'],['Es Teh']].forEach(function(x){menu.push({g:'Menu sampingan',n:x[0],k:x[0],p:5000,d:'Pelengkap'})});
   var qty=menu.map(function(){return 0});
   var rp=function(n){return 'Rp '+n.toString().replace(/\B(?=(\d{3})+(?!\d))/g,'.')};
@@ -302,7 +342,7 @@ footer img{width:72px;height:72px;border-radius:50%;margin:0 auto 12px}
     b[0].onclick=function(){set(i,-1)};b[1].onclick=function(){set(i,1)};
     box.appendChild(el);
   });
-  function set(i,d){qty[i]=Math.max(0,Math.min(menu[i].max||99,qty[i]+d));document.getElementById('q'+i).textContent=qty[i];total();}
+  function set(i,d){qty[i]=Math.max(0,Math.min(99,qty[i]+d));document.getElementById('q'+i).textContent=qty[i];total();}
   function total(){var t=0;menu.forEach(function(m,i){t+=qty[i]*m.p});document.getElementById('total').textContent=rp(t);return t;}
 
   // Kirim ke WhatsApp
@@ -340,6 +380,66 @@ footer img{width:72px;height:72px;border-radius:50%;margin:0 auto 12px}
     document.getElementById('s').textContent=z(s%60);
   }
   tick();setInterval(tick,1000);
+})();
+</script>
+<script>
+(function(){
+var cv=document.getElementById('fire'),cx=cv.getContext('2d'),
+reduce=matchMedia('(prefers-reduced-motion:reduce)').matches,
+dpr=Math.min(window.devicePixelRatio||1,1.5),small=innerWidth<760,
+NF=small?64:130,NE=small?24:48,W=0,H=0,lw=0,bs=80,cw=30,NC=0,bedG,glowG,
+I=.6,tI=.6,wx=0,twx=0,boost=0,last=0,T=0,running=false,F=[],E=[];
+function rnd(a,b){return a+Math.random()*(b-a)}
+function spr(a,b){var o=document.createElement('canvas');o.width=o.height=64;var g=o.getContext('2d'),r=g.createRadialGradient(32,32,0,32,32,32);
+ r.addColorStop(0,a);r.addColorStop(.4,b);r.addColorStop(1,'rgba(0,0,0,0)');g.fillStyle=r;g.fillRect(0,0,64,64);return o}
+var S=[spr('rgba(255,232,150,1)','rgba(255,150,30,.55)'),spr('rgba(255,150,40,1)','rgba(255,70,10,.5)'),spr('rgba(190,50,10,.9)','rgba(110,20,0,.35)')];
+function ch(){return Math.min(H*.13,120)}
+function nF(p,init){p.x=rnd(-20,W+20);p.y=H-ch()*rnd(.5,1);p.max=rnd(.9,1.8);p.age=init?rnd(0,p.max):0;p.s=rnd(.7,1.3);p.vx=rnd(-12,12);return p}
+function nE(p,init){p.x=rnd(0,W);p.y=H-rnd(0,ch());p.vy=rnd(40,120);p.ph=rnd(0,6.28);p.max=rnd(2.5,5);p.age=init?rnd(0,p.max):0;p.r=rnd(3,7);return p}
+function size(){var w=innerWidth,h=innerHeight;if(W&&w===lw&&Math.abs(h-H)<150)return;
+ lw=w;W=w;H=h;cv.width=W*dpr;cv.height=H*dpr;bs=Math.min(Math.max(W*.16,70),150);cw=Math.max(26,W/(small?13:34));NC=Math.ceil(W/cw);
+ var c=ch();bedG=cx.createLinearGradient(0,H-c,0,H);bedG.addColorStop(0,'rgba(10,8,7,0)');bedG.addColorStop(1,'rgba(10,8,7,.92)');
+ glowG=cx.createLinearGradient(0,H*.45,0,H);glowG.addColorStop(0,'rgba(255,90,20,0)');glowG.addColorStop(1,'rgba(255,90,20,.55)');
+ if(!F.length){for(var i=0;i<NF;i++)F.push(nF({},1));for(i=0;i<NE;i++)E.push(nE({},1))}
+ if(reduce)draw(0)}
+function draw(dt){var c=ch(),i,p,k,s,x;
+ cx.setTransform(dpr,0,0,dpr,0,0);cx.clearRect(0,0,W,H);
+ cx.fillStyle=bedG;cx.fillRect(0,H-c,W,c);
+ cx.globalCompositeOperation='lighter';
+ cx.globalAlpha=I*.8;cx.fillStyle=glowG;cx.fillRect(0,H*.45,W,H*.55);
+ for(i=0;i<F.length;i++){p=F[i];p.age+=dt;if(p.age>=p.max)nF(p);k=p.age/p.max;
+  p.x+=(p.vx+wx*60*k)*dt;p.y-=H*.26*I*(.6+k*.8)*dt;
+  s=bs*p.s*(1-k*.65)*(.6+I*.5);cx.globalAlpha=Math.min(1,(1-k)*.8*(.5+I*.6));
+  cx.drawImage(S[k<.28?0:k<.62?1:2],p.x-s/2,p.y-s/2,s,s)}
+ for(i=0;i<E.length;i++){p=E[i];p.age+=dt;if(p.age>=p.max)nE(p);k=p.age/p.max;
+  p.y-=p.vy*(.5+I)*dt;p.x+=(Math.sin(T*1.5+p.ph)*20+wx*50)*dt;
+  cx.globalAlpha=(1-k)*Math.min(1,I+.2)*(.6+.4*Math.sin(T*9+p.ph));s=p.r*2.4;cx.drawImage(S[0],p.x-s/2,p.y-s/2,s,s)}
+ for(i=0;i<NC;i++){x=(i+.5)*cw;s=cw*2.2;
+  cx.globalAlpha=(.3+.7*I)*(.55+.45*Math.sin(T*2.1+i*1.7)*Math.sin(T*.9+i));
+  cx.drawImage(S[1],x-s/2,H-c*.55-s/3,s,s*.66)}
+ cx.globalCompositeOperation='source-over';cx.globalAlpha=1;
+ cx.strokeStyle='#120e0c';cx.lineWidth=4;cx.beginPath();
+ for(x=cw/2;x<W;x+=cw*.9){cx.moveTo(x,H-c);cx.lineTo(x,H-c*.12)}
+ cx.moveTo(0,H-c);cx.lineTo(W,H-c);cx.moveTo(0,H-c*.5);cx.lineTo(W,H-c*.5);cx.stroke()}
+function frame(t){if(document.hidden){running=false;return}requestAnimationFrame(frame);
+ var dt=Math.min((t-last)/1000||.016,.05);last=t;T+=dt;
+ I+=(Math.min(1.15,tI+boost)-I)*Math.min(1,dt*3);wx+=(twx-wx)*Math.min(1,dt*3);boost=Math.max(0,boost-dt*.5);draw(dt)}
+function start(){if(running||reduce||document.hidden)return;running=true;last=performance.now();requestAnimationFrame(frame)}
+function mv(x){twx=(x/innerWidth-.5)*2;boost=.3}
+addEventListener('pointermove',function(e){mv(e.clientX)},{passive:true});
+addEventListener('touchmove',function(e){mv(e.touches[0].clientX)},{passive:true});
+addEventListener('pointerdown',function(e){mv(e.clientX);for(var i=0;i<12;i++){var p=E[(Math.random()*E.length)|0];nE(p);p.x=e.clientX+rnd(-30,30);p.y=H-rnd(0,40);p.vy=rnd(120,220)}boost=.5},{passive:true});
+document.addEventListener('visibilitychange',start);
+/* scroll */
+var story=document.getElementById('story'),sc=[].slice.call(story.querySelectorAll('.sc')),tmp=document.getElementById('temp'),bar=document.getElementById('bar'),tk=false,cs=-1,ct=-1;
+function upd(){tk=false;var y=scrollY,top=story.getBoundingClientRect().top+y,len=Math.max(1,story.offsetHeight-innerHeight),p=Math.min(1,Math.max(0,(y-top)/len));
+ if(y<top)tI=.6-.15*Math.min(1,y/Math.max(top,1));else if(y<=top+len)tI=.45+.55*p;else tI=1-.72*Math.min(1,(y-top-len)/innerHeight);
+ var s=Math.min(2,Math.floor(p*3));if(s!==cs){cs=s;sc.forEach(function(e,i){e.classList.toggle('on',i===s)})}
+ var t=Math.round(120+160*p);if(t!==ct){ct=t;tmp.textContent=t+'°C';bar.style.transform='scaleX('+p.toFixed(3)+')'}
+ if(reduce){I=tI;draw(0)}}
+addEventListener('scroll',function(){if(!tk){tk=true;requestAnimationFrame(upd)}},{passive:true});
+addEventListener('resize',function(){size();upd()});
+size();upd();start();if(reduce)draw(0);
 })();
 </script>
 </body>
