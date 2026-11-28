@@ -189,7 +189,7 @@ footer img{width:72px;height:72px;border-radius:50%;margin:0 auto 12px}
       </article>
       <article class="dish">
         <div class="pair"><img src="images/cumi-1.jpg" alt="Cumi bakar di atas panggangan" loading="lazy"><img src="images/cumi-2.jpg" alt="Cumi bakar bumbu di atas daun pisang" loading="lazy"></div>
-        <div class="body"><h3>Cumi Bakar</h3><div class="pr">Rp 50.000 <small>per porsi</small></div><p>Cumi empuk dibakar di atas arang dengan bumbu yang meresap.</p></div>
+        <div class="body"><h3>Cumi Bakar Porsi Besar</h3><div class="pr">Rp 80.000 <small>per ekor · <s>Rp 100.000</s></small></div><p>Cumi empuk ukuran besar (±400 g) dibakar di atas arang dengan bumbu yang meresap.</p><div class="flv"><span style="background:var(--ember);border-color:var(--ember);color:#1a0e04">Hanya 5 porsi tersedia</span></div></div>
       </article>
       <article class="dish">
         <div class="pair"><img src="images/kakap-1.jpg" alt="Kakap bakar di atas piring" loading="lazy"><img src="images/kakap-2.jpg" alt="Kakap bakar bumbu kecap" loading="lazy"></div>
@@ -284,7 +284,7 @@ footer img{width:72px;height:72px;border-radius:50%;margin:0 auto 12px}
   var WA='6282326389868';
   var menu=[
     {g:'Menu bakar',n:'Kerang Bakar (promo)',k:'Kerang Bakar',p:30000,d:'Promo launching'},
-    {g:'Menu bakar',n:'Cumi Bakar',k:'Cumi Bakar',p:50000,d:'Per porsi'},
+    {g:'Menu bakar',n:'Cumi Bakar Porsi Besar',k:'Cumi Bakar Porsi Besar (1 ekor)',p:80000,d:'Hanya 5 porsi tersedia',max:5},
     {g:'Menu bakar',n:'Kakap Bakar',k:'Kakap Bakar',p:35000,d:'Per porsi'}
   ];
   [['Nasi Putih'],['Es Jeruk'],['Es Teh']].forEach(function(x){menu.push({g:'Menu sampingan',n:x[0],k:x[0],p:5000,d:'Pelengkap'})});
@@ -302,7 +302,7 @@ footer img{width:72px;height:72px;border-radius:50%;margin:0 auto 12px}
     b[0].onclick=function(){set(i,-1)};b[1].onclick=function(){set(i,1)};
     box.appendChild(el);
   });
-  function set(i,d){qty[i]=Math.max(0,Math.min(99,qty[i]+d));document.getElementById('q'+i).textContent=qty[i];total();}
+  function set(i,d){qty[i]=Math.max(0,Math.min(menu[i].max||99,qty[i]+d));document.getElementById('q'+i).textContent=qty[i];total();}
   function total(){var t=0;menu.forEach(function(m,i){t+=qty[i]*m.p});document.getElementById('total').textContent=rp(t);return t;}
 
   // Kirim ke WhatsApp
