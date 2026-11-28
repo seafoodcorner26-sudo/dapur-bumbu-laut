@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Dapur Bumbu Laut – Kerang Bakar Savory Grill | Launching 3 Desember 2026</title>
-<meta name="description" content="Kerang bakar, cumi jumbo bakar, dan kakap bakar di atas bara arang. Promo launching kerang bakar Rp 30.000. Pesan via PO lewat WhatsApp. Free delivery Antiga, Padangbai, Manggis.">
+<title>Dapur Bumbu Laut – Kerang Bakar Savory Grill | Launching 29 November 2026</title>
+<meta name="description" content="Kerang bakar, cumi jumbo bakar, dan kakap bakar di atas bara arang. Promo launching kerang bakar Rp 30.000. Pesan via PO lewat WhatsApp. Free delivery Antiga, Padangbai, Manggis. Launching 29 November 2026, pengantaran mulai pukul 15.00.">
 <meta property="og:title" content="Dapur Bumbu Laut – Kerang Bakar">
 <meta property="og:description" content="Bumbu meresap, sari laut pilihan. Promo launching Rp 30.000, pesan via PO.">
 <meta property="og:image" content="images/hero.jpg">
@@ -190,7 +190,7 @@ footer{background:rgba(11,9,8,.9)}
         <a href="#pesan" class="btn btn-fire">Pesan via PO</a>
         <a href="#menu" class="btn btn-ghost">Lihat menu</a>
       </div>
-      <p class="count-note" id="countNote">Launching Kamis, 3 Desember 2026 · buka pukul 10.00</p>
+      <p class="count-note" id="countNote">Launching Minggu, 29 November 2026 · pengantaran mulai pukul 15.00 · pemesanan sudah dibuka</p>
       <div class="count" id="count" aria-live="polite">
         <div><b id="d">--</b><small>hari</small></div>
         <div><b id="h">--</b><small>jam</small></div>
@@ -272,12 +272,12 @@ footer{background:rgba(11,9,8,.9)}
       </div>
       <div class="row2">
         <div><label for="nama">Nama</label><input id="nama" autocomplete="name" placeholder="Nama Anda"></div>
-        <div><label for="tgl">Tanggal ambil/antar</label><input type="date" id="tgl" min="2026-12-03"></div>
+        <div><label for="tgl">Tanggal ambil/antar</label><input type="date" id="tgl" min="2026-11-29"></div>
       </div>
       <div class="row2">
         <div><label for="area">Area pengantaran</label>
           <select id="area"><option value="">Pilih area</option><option>Antiga</option><option>Padangbai</option><option>Manggis</option><option>Lainnya (tanya dulu)</option></select></div>
-        <div><label for="jam">Perkiraan jam (10.00–21.00)</label><input type="time" id="jam" min="10:00" max="21:00"></div>
+        <div><label for="jam">Perkiraan jam (29 Nov mulai 15.00)</label><input type="time" id="jam" min="10:00" max="21:00"></div>
       </div>
       <div><label for="alamat">Alamat lengkap</label><textarea id="alamat" placeholder="Nama jalan, nomor rumah, patokan"></textarea></div>
       <div><label for="cat">Catatan (opsional)</label><input id="cat" placeholder="Misal: tidak terlalu pedas"></div>
@@ -295,7 +295,7 @@ footer{background:rgba(11,9,8,.9)}
     <div class="info">
       <div><h3>Sistem PO</h3><p>Tidak ada lokasi toko. Semua pesanan lewat pre-order via WhatsApp.</p></div>
       <div><h3>Free delivery</h3><p>Gratis antar untuk area Antiga, Padangbai, dan Manggis.</p></div>
-      <div><h3>Jam buka</h3><p>Setiap hari pukul 10.00 – 21.00.</p></div>
+      <div><h3>Jam buka</h3><p>Launching 29 November 2026: pengantaran mulai pukul 15.00. Setelahnya setiap hari pukul 10.00 – 21.00.</p></div>
     </div>
   </div>
 </section>
@@ -364,12 +364,12 @@ footer{background:rgba(11,9,8,.9)}
     window.open('https://wa.me/'+WA+'?text='+encodeURIComponent(lines.join('\n')),'_blank');
   });
 
-  // Hitung mundur launching: 3 Des 2026, 10.00 WITA
-  var target=new Date('2026-12-03T10:00:00+08:00').getTime();
+  // Hitung mundur launching: 29 Nov 2026, 15.00 WITA
+  var target=new Date('2026-11-29T15:00:00+08:00').getTime();
   function tick(){
     var diff=target-Date.now();
     if(diff<=0){document.getElementById('count').style.display='none';
-      document.getElementById('countNote').textContent='Kami sudah buka! Pesan sekarang lewat PO.';return}
+      document.getElementById('countNote').textContent='Kami sudah buka! Pengantaran berjalan, pesan sekarang lewat PO.';return}
     var s=Math.floor(diff/1000),z=function(x){return String(x).padStart(2,'0')};
     document.getElementById('d').textContent=Math.floor(s/86400);
     document.getElementById('h').textContent=z(Math.floor(s%86400/3600));
@@ -377,6 +377,10 @@ footer{background:rgba(11,9,8,.9)}
     document.getElementById('s').textContent=z(s%60);
   }
   tick();setInterval(tick,1000);
+  // Jam minimal: 15.00 di hari launching, 10.00 di hari lain
+  var tg=document.getElementById('tgl'),jm=document.getElementById('jam');
+  function lim(){jm.min=tg.value==='2026-11-29'?'15:00':'10:00';if(jm.value&&jm.value<jm.min)jm.value=''}
+  tg.addEventListener('change',lim);lim();
 })();
 </script>
 <script>
